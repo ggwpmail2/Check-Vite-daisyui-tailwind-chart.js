@@ -6,9 +6,9 @@
   font-family: "Sofia Sans Condensed", sans-serif;
   font-optical-sizing: auto;
 }
-
-
-
+body {
+    @apply px-4 md:px-0
+}
 [data-theme="winter"] {
     .hello_there {
        @apply bg-green-400
@@ -18,9 +18,21 @@
     .hello_there {
        @apply bg-purple-400
     }
+    .card {
+        @apply shadow-purple-500;
+    }
 }
 .hello_there {
     @apply text-center mx-auto my-8 py-3 px-2 text-white rounded shadow-lg hover:bg-fuchsia-300 transition
+ }
+ .posts_block {
+    @apply flex items-center justify-between gap-4 mt-8 p-8 rounded-lg shadow-lg border-opacity-40 border border-violet-400 flex-col md:flex-row;
+ }
+ .card_flex {
+    @apply container mx-auto grid grid-cols-1 md:grid-cols-4 gap-4;
+    .card {
+       
+    }
  }
 .slider {
     &__range_value {

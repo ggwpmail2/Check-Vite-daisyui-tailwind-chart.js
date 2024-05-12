@@ -68,7 +68,7 @@ chart=new Chart("myChart", {
   options: {
     legend: {display: false},
     scales: {
-      yAxes: [{ticks: {min: 0, max:128}}],
+      yAxes: [{ticks: {min: 0, max:64}}],
     }
   }
 });
@@ -87,3 +87,35 @@ function bytesToSize(bytes, precision = 2) {
     return (bytes / Math.pow(1024, index)).toFixed(precision);
 }
 
+function addPosts() {
+  fetch('https://jsonplaceholder.typicode.com/posts/', {
+  method: "GET",
+  headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+})
+.then((response) => response.json())
+.then((data) => {
+  let img_url = 'https://placehold.co/600x400';
+  let now_card = document.querySelectorAll('.card');
+  console.log(now_card.length);
+  let take_fother = data.slice(now_card.length,now_card.length+8);
+  const posts = take_fother.map((single_post) => { 
+      return `
+      <div class="card bg-base-100 shadow-lg">
+          <figure><img src="${img_url}" alt="${single_post.title}" /></figure>
+          <div class="card-body">
+              <h2 class="card-title">${single_post.title}</h2>
+              <p>${single_post.body}</p>
+              <div class="card-actions justify-end">
+              <button class="btn btn-primary">CLICK</button>
+              </div>
+          </div>
+      </div>
+  `; });
+  const html = `${posts.join("")}`;
+  
+  document.querySelector('.card_flex').innerHTML += html;
+
+})
+}
