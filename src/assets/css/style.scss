@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: "Sofia Sans Condensed", sans-serif;
+  font-optical-sizing: auto;
+}
+
+
+
+[data-theme="winter"] {
+    .hello_there {
+       @apply bg-green-400
+    }
+}
+[data-theme="dark"] {
+    .hello_there {
+       @apply bg-purple-400
+    }
+}
+.hello_there {
+    @apply text-center mx-auto my-8 py-3 px-2 text-white rounded shadow-lg hover:bg-fuchsia-300 transition
+ }
+.slider {
+    &__range_value {
+        @apply flex items-center gap-2 justify-center
+    }
+    &__minus_value {
+        @apply text-red-500 opacity-0 transition-opacity text-2xl;
+    }
+    &__inner_value {
+        @apply text-center text-4xl my-4;
+    }
+    &__plus_value {
+        @apply text-green-500 opacity-0 transition-opacity text-2xl;
+    }
+    .show_opacity {
+        @apply opacity-100;
+    }
+}
